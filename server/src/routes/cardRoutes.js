@@ -43,7 +43,8 @@ router.post('/generate', async (req, res, next) => {
       photoUrl: req.body.photoUrl
     });
 
-    const finalImage = await uploadBase64PngToCloudinary(imageBase64, `invitation-${shortId}`);
+    const apiBaseUrl = `${req.protocol}://${req.get('host')}`;
+    const finalImage = await uploadBase64PngToCloudinary(imageBase64, `invitation-${shortId}`, apiBaseUrl);
 
     const invitationPayload = {
       shortId,

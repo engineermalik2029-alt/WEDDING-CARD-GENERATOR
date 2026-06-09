@@ -5,12 +5,12 @@ let databaseConnected = false;
 export async function connectDatabase() {
   const uri = process.env.MONGODB_URI;
 
-  if (!uri) {
+  if (process.env.FREE_MODE !== 'false' || !uri) {
     if (process.env.REQUIRE_MONGODB === 'true') {
       throw new Error('MONGODB_URI is required. Add it to server/.env.');
     }
 
-    console.warn('MONGODB_URI is not set. Using local JSON storage for development/demo mode.');
+    console.warn('FREE_MODE enabled or MONGODB_URI is not set. Using free local JSON storage.');
     return false;
   }
 

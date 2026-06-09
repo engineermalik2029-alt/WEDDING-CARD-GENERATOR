@@ -1,14 +1,17 @@
 # Premium Wedding Invitation Studio
 
-A full-stack single-page web application for dynamically generating and sharing premium AI-powered wedding invitation cards.
+A full-stack single-page web application for dynamically generating and sharing premium wedding invitation cards. It is **free forever by default**: local text generation, local SVG/PNG-style card generation, local uploaded files, and local JSON persistence work without OpenAI, MongoDB, Cloudinary, or paid hosting.
 
 ## Stack
 
 - **Frontend:** React + Vite + Tailwind CSS
 - **Backend:** Node.js + Express
-- **AI:** OpenAI Chat Completions + Image Generation
-- **Database:** MongoDB + Mongoose
-- **Storage:** Cloudinary
+- **Free Generator:** Local multilingual invitation text + local luxury SVG card renderer
+- **Optional AI:** OpenAI Chat Completions + Image Generation when `FREE_MODE=false`
+- **Free Database:** Local JSON persistence
+- **Optional Database:** MongoDB + Mongoose when `FREE_MODE=false`
+- **Free Storage:** Local uploaded/generated files
+- **Optional Storage:** Cloudinary when `FREE_MODE=false`
 - **Share URLs:** `nanoid` short IDs with `/card/:id` viewer route
 
 ## Project Structure
@@ -27,12 +30,15 @@ Create `server/.env` from `server/.env.example`:
 cp server/.env.example server/.env
 ```
 
-Required values:
+Free forever mode works with no `.env` file. Optional values:
 
 ```env
 PORT=5000
 CLIENT_URL=http://localhost:5173
 PUBLIC_APP_URL=http://localhost:5173
+FREE_MODE=true
+
+# Optional paid/cloud production values. Only used when FREE_MODE=false.
 MONGODB_URI=mongodb+srv://USER:PASSWORD@cluster.mongodb.net/wedding_cards
 OPENAI_API_KEY=sk-...
 OPENAI_TEXT_MODEL=gpt-5.5
@@ -76,15 +82,37 @@ npm run dev
 - Frontend: <http://localhost:5173>
 - Backend: <http://localhost:5000>
 
+## Free Forever Mode
+
+By default, `FREE_MODE=true` behavior is active even if you do not create any `.env` file.
+
+In this mode:
+
+- No OpenAI key is required.
+- No Cloudinary account is required.
+- No MongoDB database is required.
+- Uploaded photos are saved in `server/uploads`.
+- Generated final cards are saved in `server/uploads/generated`.
+- Invitation records are saved in `server/data/invitations.json`.
+- The generated final card uses the built-in premium local SVG renderer.
+
+To use paid production services later, set:
+
+```env
+FREE_MODE=false
+```
+
+Then add OpenAI, Cloudinary, and MongoDB credentials.
+
 ## Workflow
 
 1. User selects a premium template/theme.
 2. User enters groom, bride, date, venue, RSVP, language, and uploads a photo.
-3. Frontend uploads the photo to Cloudinary through `POST /api/uploads/photo`.
-4. Backend asks OpenAI Chat Completions to generate culturally elegant invitation copy.
-5. Backend sends a detailed image prompt to OpenAI Image Generation.
-6. Generated PNG is uploaded to Cloudinary.
-7. MongoDB stores form data, photo URL, generated text, final image URL, and short ID.
+3. Frontend uploads the photo through `POST /api/uploads/photo`.
+4. Backend generates culturally elegant invitation copy locally in free mode, or with OpenAI when enabled.
+5. Backend creates the final card locally in free mode, or with OpenAI Image Generation when enabled.
+6. Generated card is stored locally in free mode, or uploaded to Cloudinary when enabled.
+7. Local JSON stores form data, photo URL, generated text, final image URL, and short ID; MongoDB is optional.
 8. Frontend returns a share URL: `/card/:shortId`.
 
 ## API Endpoints

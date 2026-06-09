@@ -2,7 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { uploadBufferToCloudinary } from '../lib/cloudinary.js';
+import { shouldUseCloudinary, uploadBufferToCloudinary } from '../lib/cloudinary.js';
 
 const router = Router();
 
@@ -26,7 +26,7 @@ router.post('/photo', upload.single('photo'), async (req, res, next) => {
 
     let result;
 
-    if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+    if (!shouldUseCloudinary()) {
       const extension = req.file.mimetype.split('/')[1].replace('jpeg', 'jpg');
       const fileName = `photo-${Date.now()}.${extension}`;
       const uploadDirectory = path.resolve(process.cwd(), 'uploads');

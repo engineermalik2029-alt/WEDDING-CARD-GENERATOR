@@ -2,6 +2,10 @@ import OpenAI from 'openai';
 
 let openai;
 
+function isFreeMode() {
+  return process.env.FREE_MODE !== 'false';
+}
+
 function ensureOpenAiKey() {
   if (!process.env.OPENAI_API_KEY) {
     throw new Error('OPENAI_API_KEY is required. Add it to server/.env.');
@@ -79,8 +83,8 @@ function fallbackImageBase64({ generatedText, theme, language, photoUrl }) {
 }
 
 export async function generateInvitationText({ groomName, brideName, weddingDate, weddingVenue, language }) {
-  if (!process.env.OPENAI_API_KEY) {
-    console.warn('OPENAI_API_KEY missing. Using local invitation text generator for development/demo mode.');
+  if (isFreeMode() || !process.env.OPENAI_API_KEY) {
+    console.warn('FREE_MODE enabled or OPENAI_API_KEY missing. Using free local invitation text generator.');
     return fallbackInvitationText({ groomName, brideName, weddingDate, weddingVenue, language });
   }
 
@@ -104,8 +108,8 @@ export async function generateInvitationText({ groomName, brideName, weddingDate
 }
 
 export async function generateInvitationImage({ generatedText, theme, language, photoUrl }) {
-  if (!process.env.OPENAI_API_KEY) {
-    console.warn('OPENAI_API_KEY missing. Using local SVG image generator for development/demo mode.');
+  if (isFreeMode() || !process.env.OPENAI_API_KEY) {
+    console.warn('FREE_MODE enabled or OPENAI_API_KEY missing. Using free local SVG image generator.');
     return fallbackImageBase64({ generatedText, theme, language, photoUrl });
   }
 
