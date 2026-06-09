@@ -1,0 +1,26 @@
+{
+  "name": "premium-wedding-invitation-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cloudinary": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "helmet": "latest",
+    "mongoose": "latest",
+    "multer": "latest",
+    "nanoid": "latest",
+    "openai": "latest",
+    "streamifier": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "latest"
+  }
+}

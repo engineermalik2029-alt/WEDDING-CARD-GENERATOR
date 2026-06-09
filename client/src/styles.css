@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #08070d;
+}
+
+.gold-text {
+  background: linear-gradient(90deg, #fff7cc, #d8b46a, #fff1a8, #b17c26);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+select option {
+  color: #111827;
+}
