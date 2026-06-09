@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Wedding Invitation Studio</title>
+    <style>
+      :root { color-scheme: dark; --gold:#d9b76f; --gold2:#fff2bd; --muted:rgba(255,248,221,.72); }
+      * { box-sizing:border-box; }
+      body { margin:0; min-height:100vh; font-family:Inter,Segoe UI,Arial,sans-serif; color:#fff8dd; background:radial-gradient(circle at 12% 0%,rgba(217,183,111,.34),transparent 32%),radial-gradient(circle at 88% 8%,rgba(139,92,246,.24),transparent 30%),linear-gradient(135deg,#07070d,#16111f 52%,#07070d); }
+      .page { width:min(1180px,calc(100% - 32px)); margin:auto; padding:28px 0 54px; }
+      header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0 42px; }
+      .brand { display:flex; align-items:center; gap:14px; }
+      .logo { width:54px; height:54px; display:grid; place-items:center; border-radius:18px; background:linear-gradient(135deg,var(--gold2),#b8861d); color:#171006; font-size:28px; box-shadow:0 0 44px rgba(217,183,111,.36); }
+      .brand b { display:block; color:white; font-size:18px; } .brand span { color:rgba(255,248,221,.58); font-size:13px; font-weight:700; }
+      .pill { border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.08); color:#fff1bd; border-radius:999px; padding:10px 15px; font-weight:800; font-size:13px; }
+      .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:42px; align-items:center; }
+      .eyebrow { display:inline-flex; gap:9px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.09); border-radius:999px; padding:9px 14px; color:#ffe6a0; font-weight:900; margin-bottom:18px; }
+      h1 { margin:0; max-width:780px; color:white; letter-spacing:-.07em; line-height:.88; font-size:clamp(50px,8vw,104px); }
+      .gold { background:linear-gradient(90deg,#fff2bd,#d4af37,#fff0b3); -webkit-background-clip:text; background-clip:text; color:transparent; }
+      .lead { max-width:680px; margin:24px 0 0; color:var(--muted); font-size:19px; line-height:1.8; }
+      .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
+      .btn { display:inline-flex; align-items:center; justify-content:center; min-height:54px; border-radius:18px; padding:0 22px; border:1px solid rgba(255,255,255,.14); text-decoration:none; font-weight:950; color:white; background:rgba(255,255,255,.09); }
+      .btn.primary { border:0; color:#171006; background:linear-gradient(90deg,#fff2bd,#eab308,#b7791f); box-shadow:0 0 50px rgba(234,179,8,.25); }
+      .card { position:relative; aspect-ratio:4/5; width:min(100%,430px); margin:0 auto; border-radius:38px; border:1px solid rgba(255,242,189,.24); padding:18px; background:#050505; box-shadow:0 40px 100px rgba(0,0,0,.56),0 0 70px rgba(217,183,111,.22); }
+      .card-inner { height:100%; border-radius:28px; padding:28px; display:flex; flex-direction:column; justify-content:space-between; text-align:center; background:linear-gradient(to top,rgba(0,0,0,.94),rgba(0,0,0,.4),rgba(0,0,0,.14)),radial-gradient(circle at top,rgba(250,204,21,.34),transparent 35%),linear-gradient(135deg,#120a2a,#2f0f26,#d4af37); overflow:hidden; }
+      .card small { color:#ffe8a3; letter-spacing:.34em; font-weight:950; text-transform:uppercase; } .names { color:white; font-family:Georgia,serif; font-size:clamp(42px,6vw,62px); font-weight:900; line-height:.96; } .amp { color:#ffe8a3; font-family:Georgia,serif; font-size:40px; margin:10px; } .details { color:rgba(255,248,221,.84); font-weight:850; line-height:1.7; }
+      .panel-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:46px; } .panel { border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.075); border-radius:26px; padding:22px; backdrop-filter:blur(18px); } .panel h3{margin:0 0 8px;color:white}.panel p{margin:0;color:rgba(255,248,221,.66);line-height:1.65}
+      .notice { margin-top:34px; border:1px solid rgba(248,230,173,.22); background:rgba(0,0,0,.28); border-radius:28px; padding:22px; line-height:1.7; }
+      code { display:inline-block; margin:5px 4px 0 0; border:1px solid rgba(255,255,255,.14); border-radius:12px; background:rgba(0,0,0,.42); padding:8px 10px; color:#fff2bd; font-weight:800; }
+      @media (max-width:860px){ .hero,.panel-grid{grid-template-columns:1fr} header{align-items:flex-start;flex-direction:column} }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header><div class="brand"><div class="logo">♛</div><div><b>Wedding AI Studio</b><span>React + Express + AI invitation generator</span></div></div><div class="pill">Professional full-stack app ready</div></header>
+      <section class="hero">
+        <div><div class="eyebrow">✨ Premium AI wedding cards</div><h1>Create cinematic <span class="gold">wedding invitations</span>.</h1><p class="lead">This launcher page works even when opened directly. For the full editor, start the Vite/Express app once and use the local URL below.</p><div class="actions"><a class="btn primary" href="http://localhost:5173">Open Running App</a><a class="btn" href="client/index.html">React Entry File</a></div></div>
+        <div class="card"><div class="card-inner"><div><small>Wedding Invitation</small><p style="color:#fff2bd;font-weight:800">Royal • English</p></div><div><div class="names">Ayaan Malik</div><div class="amp">&</div><div class="names">Zoya Khan</div></div><div class="details">Sunday, 21 December 2026<br>The Royal Palm, Lahore<br>RSVP +92 300 1234567</div></div></div>
+      </section>
+      <section class="panel-grid"><article class="panel"><h3>1. Start the app</h3><p>Double-click <b>start-website.bat</b>, or run the terminal commands below.</p></article><article class="panel"><h3>2. Open browser</h3><p>Use <b>http://localhost:5173</b>. Do not use file:// for the React app.</p></article><article class="panel"><h3>3. Generate & share</h3><p>Upload a photo, generate the card, and share the unique /card/:id link.</p></article></section>
+      <section class="notice"><b>Terminal commands:</b><br><code>cd premium-card-generator</code><code>npm install</code><code>npm run dev</code><br><br>Then open <code>http://localhost:5173</code>. Backend: <code>http://localhost:5000</code>.</section>
+    </main>
+  </body>
+</html>

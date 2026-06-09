@@ -50,6 +50,24 @@ VITE_API_URL=http://localhost:5000
 
 ## Local Development
 
+### Easiest on Windows
+
+Double-click:
+
+```txt
+start-website.bat
+```
+
+Then open:
+
+```txt
+http://localhost:5173
+```
+
+> Do not open `client/index.html` directly with `file://`. React/Vite apps must be served by Vite or a static web server.
+
+### Terminal
+
 ```bash
 npm install
 npm run dev

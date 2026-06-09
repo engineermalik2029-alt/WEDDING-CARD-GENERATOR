@@ -33,7 +33,12 @@ function classNames(...items) {
 }
 
 async function apiFetch(path, options = {}) {
-  const response = await fetch(`${API_URL}${path}`, options);
+  let response;
+  try {
+    response = await fetch(`${API_URL}${path}`, options);
+  } catch (_error) {
+    throw new Error('Backend is not running. Please start the website with start-website.bat or run npm run dev, then open http://localhost:5173.');
+  }
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.message || 'Request failed.');
   return data;
